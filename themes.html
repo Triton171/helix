@@ -77,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="usage.html"><strong aria-hidden="true">2.</strong> Usage</a></li><li class="chapter-item expanded "><a href="from-vim.html"><strong aria-hidden="true">3.</strong> Migrating from Vim</a></li><li class="chapter-item expanded "><a href="configuration.html"><strong aria-hidden="true">4.</strong> Configuration</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="themes.html" class="active"><strong aria-hidden="true">4.1.</strong> Themes</a></li><li class="chapter-item expanded "><a href="keymap.html"><strong aria-hidden="true">4.2.</strong> Keymap</a></li><li class="chapter-item expanded "><a href="remapping.html"><strong aria-hidden="true">4.3.</strong> Key Remapping</a></li><li class="chapter-item expanded "><a href="hooks.html"><strong aria-hidden="true">4.4.</strong> Hooks</a></li></ol></li><li class="chapter-item expanded "><a href="guides/index.html"><strong aria-hidden="true">5.</strong> Guides</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guides/textobject.html"><strong aria-hidden="true">5.1.</strong> Adding Textobject Queries</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="usage.html"><strong aria-hidden="true">2.</strong> Usage</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="keymap.html"><strong aria-hidden="true">2.1.</strong> Keymap</a></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">2.2.</strong> Commands</a></li><li class="chapter-item expanded "><a href="lang-support.html"><strong aria-hidden="true">2.3.</strong> Language Support</a></li></ol></li><li class="chapter-item expanded "><a href="from-vim.html"><strong aria-hidden="true">3.</strong> Migrating from Vim</a></li><li class="chapter-item expanded "><a href="configuration.html"><strong aria-hidden="true">4.</strong> Configuration</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="themes.html" class="active"><strong aria-hidden="true">4.1.</strong> Themes</a></li><li class="chapter-item expanded "><a href="remapping.html"><strong aria-hidden="true">4.2.</strong> Key Remapping</a></li><li class="chapter-item expanded "><a href="hooks.html"><strong aria-hidden="true">4.3.</strong> Hooks</a></li><li class="chapter-item expanded "><a href="languages.html"><strong aria-hidden="true">4.4.</strong> Languages</a></li></ol></li><li class="chapter-item expanded "><a href="guides/index.html"><strong aria-hidden="true">5.</strong> Guides</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guides/adding_languages.html"><strong aria-hidden="true">5.1.</strong> Adding Languages</a></li><li class="chapter-item expanded "><a href="guides/textobject.html"><strong aria-hidden="true">5.2.</strong> Adding Textobject Queries</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -211,13 +211,13 @@ over it and is merged into the default palette.</p>
 <a href="https://macromates.com/manual/en/language_grammars">TextMate</a> scopes.</p>
 <ul>
 <li>
-<p><code>escape</code> (TODO: rename to (constant).character.escape)</p>
-</li>
-<li>
 <p><code>type</code> - Types</p>
 <ul>
 <li><code>builtin</code> - Primitive types provided by the language (<code>int</code>, <code>usize</code>)</li>
 </ul>
+</li>
+<li>
+<p><code>constructor</code></p>
 </li>
 <li>
 <p><code>constant</code> (TODO: constant.other.placeholder for %v)</p>
@@ -227,11 +227,18 @@ over it and is merged into the default palette.</p>
 <li><code>boolean</code></li>
 </ul>
 </li>
-<li><code>character</code></li>
+<li><code>character</code>
+<ul>
+<li><code>escape</code></li>
 </ul>
 </li>
-<li>
-<p><code>number</code> (TODO: rename to constant.number/.numeric.{integer, float, complex})</p>
+<li><code>numeric</code> (numbers)
+<ul>
+<li><code>integer</code></li>
+<li><code>float</code></li>
+</ul>
+</li>
+</ul>
 </li>
 <li>
 <p><code>string</code> (TODO: string.quoted.{single, double}, string.raw/.unquoted)?</p>
@@ -262,7 +269,11 @@ over it and is merged into the default palette.</p>
 <ul>
 <li><code>builtin</code> - Reserved language variables (<code>self</code>, <code>this</code>, <code>super</code>, etc)</li>
 <li><code>parameter</code> - Function parameters</li>
-<li><code>property</code></li>
+<li><code>other</code>
+<ul>
+<li><code>member</code> - Fields of composite data types (e.g. structs, unions)</li>
+</ul>
+</li>
 <li><code>function</code> (TODO: ?)</li>
 </ul>
 </li>
@@ -284,15 +295,16 @@ over it and is merged into the default palette.</p>
 <li><code>conditional</code> - <code>if</code>, <code>else</code></li>
 <li><code>repeat</code> - <code>for</code>, <code>while</code>, <code>loop</code></li>
 <li><code>import</code> - <code>import</code>, <code>export</code></li>
-<li>(TODO: return?)</li>
+<li><code>return</code></li>
 </ul>
 </li>
+<li><code>operator</code> - <code>or</code>, <code>in</code></li>
 <li><code>directive</code> - Preprocessor directives (<code>#if</code> in C) </li>
 <li><code>function</code> - <code>fn</code>, <code>func</code></li>
 </ul>
 </li>
 <li>
-<p><code>operator</code> - <code>||</code>, <code>+=</code>, <code>&gt;</code>, <code>or</code></p>
+<p><code>operator</code> - <code>||</code>, <code>+=</code>, <code>&gt;</code></p>
 </li>
 <li>
 <p><code>function</code></p>
@@ -308,6 +320,33 @@ over it and is merged into the default palette.</p>
 </li>
 <li>
 <p><code>namespace</code></p>
+</li>
+<li>
+<p><code>markup</code></p>
+<ul>
+<li><code>heading</code></li>
+<li><code>list</code>
+<ul>
+<li><code>unnumbered</code></li>
+<li><code>numbered</code></li>
+</ul>
+</li>
+<li><code>bold</code></li>
+<li><code>italic</code></li>
+<li><code>link</code>
+<ul>
+<li><code>url</code></li>
+<li><code>label</code></li>
+</ul>
+</li>
+<li><code>quote</code></li>
+<li><code>raw</code>
+<ul>
+<li><code>inline</code></li>
+<li><code>block</code></li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 <h4 id="interface"><a class="header" href="#interface">Interface</a></h4>
@@ -348,7 +387,7 @@ over it and is merged into the default palette.</p>
                             <a rel="prev" href="configuration.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="keymap.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="remapping.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -360,7 +399,7 @@ over it and is merged into the default palette.</p>
                     <a rel="prev" href="configuration.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="keymap.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="remapping.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
